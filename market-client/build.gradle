@@ -20,7 +20,6 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.springframework.fu:spring-fu-jafu:0.4.0'
 
     implementation 'com.hazelcast:hazelcast:4.0'
     implementation 'com.hazelcast:hazelcast-spring:4.0'
@@ -35,4 +34,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+compileJava {
+    options.compilerArgs += ['--enable-preview']
+}
+
+compileTestJava {
+    options.compilerArgs += ['--enable-preview']
 }

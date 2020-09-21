@@ -7,7 +7,7 @@ public class QuoteTime implements Serializable {
 
     private final LocalTime value;
 
-    QuoteTime(LocalTime value) {
+    public QuoteTime(LocalTime value) {
         this.value = value;
     }
 

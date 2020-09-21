@@ -9,6 +9,10 @@ public class HazelcastRequest<T> {
     private HazelcastRequest() {
     }
 
+    private HazelcastRequest(Callable<T> task) {
+        this.task = task;
+    }
+
     private HazelcastRequest(String partitioningKey, Callable<T> task) {
         this.partitioningKey = partitioningKey;
         this.task = task;
@@ -30,25 +34,7 @@ public class HazelcastRequest<T> {
         return task;
     }
 
-    public static class HazelcastRequestBuilder<T> {
-        private final HazelcastRequest<T> hazelcastRequest;
-
-        public HazelcastRequestBuilder(HazelcastRequest<T> hazelcastRequest) {
-            this.hazelcastRequest = hazelcastRequest;
-        }
-
-        public static HazelcastRequestBuilder<?> newInstance() {
-            return new HazelcastRequestBuilder<>(new HazelcastRequest<>());
-        }
-
-        public HazelcastRequestBuilder<?> withPartitioningKey(String partitioningKey) {
-            this.hazelcastRequest.setPartitioningKey(partitioningKey);
-            return this;
-        }
-
-        public HazelcastRequestBuilder<?> withTask(Callable<T> task) {
-            this.hazelcastRequest.setTask(task);
-            return this;
-        }
+    public static <R> HazelcastRequest<R> of(Callable<R> task) {
+        return new HazelcastRequest<>(task);
     }
 }
