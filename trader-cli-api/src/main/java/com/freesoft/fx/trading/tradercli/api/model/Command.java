@@ -13,4 +13,16 @@ public abstract class Command implements Serializable {
         this.units = units;
         this.quotePair = quotePair;
     }
+
+    public TraderRefId getTraderRefId() {
+        return traderRefId;
+    }
+
+    public int getUnits() {
+        return units;
+    }
+
+    public QuotePair getQuotePair() {
+        return quotePair;
+    }
 }

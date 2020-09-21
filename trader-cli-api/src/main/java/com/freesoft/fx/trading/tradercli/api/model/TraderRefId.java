@@ -8,4 +8,8 @@ public class TraderRefId implements Serializable {
     public TraderRefId(String value) {
         this.value = value;
     }
+
+    public String getValue() {
+        return value;
+    }
 }

@@ -9,5 +9,5 @@ public interface TraderHistoryRepository {
 
     List<Command> findAll(TraderRefId trader);
 
-    public void add(Command command);
+    void add(Command command);
 }
