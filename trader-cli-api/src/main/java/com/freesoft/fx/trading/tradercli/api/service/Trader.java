@@ -7,7 +7,7 @@ import com.freesoft.fx.trading.tradercli.api.model.SellSucceeded;
 
 public abstract class Trader {
 
-    protected abstract BuySucceeded buy(BuyCommand command);
+    public abstract BuySucceeded buy(BuyCommand command);
 
-    protected abstract SellSucceeded sell(SellCommand command);
+    public abstract SellSucceeded sell(SellCommand command);
 }

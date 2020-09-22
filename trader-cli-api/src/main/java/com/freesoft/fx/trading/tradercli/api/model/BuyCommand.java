@@ -2,7 +2,7 @@ package com.freesoft.fx.trading.tradercli.api.model;
 
 public class BuyCommand extends Command {
 
-    protected BuyCommand(TraderRefId traderRefId, int units, QuotePair quotePair) {
+    public BuyCommand(TraderRefId traderRefId, int units, QuotePair quotePair) {
         super(traderRefId, units, quotePair);
     }
 
@@ -13,15 +13,5 @@ public class BuyCommand extends Command {
                 ", units=" + units +
                 ", quotePair=" + quotePair +
                 '}';
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
     }
 }

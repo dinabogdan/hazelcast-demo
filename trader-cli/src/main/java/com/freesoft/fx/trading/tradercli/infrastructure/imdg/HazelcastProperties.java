@@ -1,4 +1,4 @@
-package com.freesoft.fx.trading.marketclient.infrastructure.imdg;
+package com.freesoft.fx.trading.tradercli.infrastructure.imdg;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
@@ -8,7 +8,8 @@ import java.util.Map;
 @ConstructorBinding
 @ConfigurationProperties(prefix = "hazelcast")
 public class HazelcastProperties {
-    private int initialBackoffMillis;
+
+    private int initialBackoffMMillis;
     private int maxBackoffMillis;
     private double multiplier;
     private long clusterConnectTimeoutMillis;
@@ -18,18 +19,17 @@ public class HazelcastProperties {
     private Map<String, String> clientProperties;
     private TcpProperties tcp;
     private String executorServiceName;
-    private String namespace;
 
     public HazelcastProperties() {
 
     }
 
-    public int getInitialBackoffMillis() {
-        return initialBackoffMillis;
+    public int getInitialBackoffMMillis() {
+        return initialBackoffMMillis;
     }
 
-    public void setInitialBackoffMillis(int initialBackoffMillis) {
-        this.initialBackoffMillis = initialBackoffMillis;
+    public void setInitialBackoffMMillis(int initialBackoffMMillis) {
+        this.initialBackoffMMillis = initialBackoffMMillis;
     }
 
     public int getMaxBackoffMillis() {
@@ -102,13 +102,5 @@ public class HazelcastProperties {
 
     public void setExecutorServiceName(String executorServiceName) {
         this.executorServiceName = executorServiceName;
-    }
-
-    public String getNamespace() {
-        return namespace;
-    }
-
-    public void setNamespace(String namespace) {
-        this.namespace = namespace;
     }
 }
