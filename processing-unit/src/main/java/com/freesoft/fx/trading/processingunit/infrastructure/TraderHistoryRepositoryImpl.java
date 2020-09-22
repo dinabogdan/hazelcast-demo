@@ -24,7 +24,7 @@ public class TraderHistoryRepositoryImpl implements TraderHistoryRepository {
 
     @Override
     public List<Command> findAll(TraderRefId trader) {
-        log.info("Retrievig trading history for " + trader);
+        log.info("Retrieving trading history for " + trader);
         return new ArrayList<>(getMap().values());
     }
 
