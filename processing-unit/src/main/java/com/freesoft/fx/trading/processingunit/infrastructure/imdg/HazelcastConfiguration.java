@@ -15,7 +15,7 @@ public class HazelcastConfiguration {
 
     @Bean
     public Config hazelcastConfig(SpringManagedContext springManagedContext, HazelcastConfigurationProperties hazelcastConfigurationProperties) {
-        var config = new Config();
+        var config = new com.hazelcast.config.Config();
 
         config.setManagedContext(springManagedContext);
         config.getUserCodeDeploymentConfig().setEnabled(true);
@@ -23,6 +23,7 @@ public class HazelcastConfiguration {
 
         if (hazelcastConfigurationProperties.getTcp().getEnabled()) {
             config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
+            config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(true);
             config.getNetworkConfig().getJoin().getTcpIpConfig().setMembers(hazelcastConfigurationProperties.getTcp().getMembers());
         }
 
