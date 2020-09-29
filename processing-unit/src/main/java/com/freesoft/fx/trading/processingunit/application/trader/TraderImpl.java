@@ -1,11 +1,15 @@
 package com.freesoft.fx.trading.processingunit.application.trader;
 
+import java.time.LocalDateTime;
+
 import com.freesoft.fx.trading.processingunit.domain.TraderHistoryRepository;
-import com.freesoft.fx.trading.tradercli.api.model.*;
+import com.freesoft.fx.trading.tradercli.api.model.BuyCommand;
+import com.freesoft.fx.trading.tradercli.api.model.BuySucceeded;
+import com.freesoft.fx.trading.tradercli.api.model.DateTime;
+import com.freesoft.fx.trading.tradercli.api.model.SellCommand;
+import com.freesoft.fx.trading.tradercli.api.model.SellSucceeded;
 import com.freesoft.fx.trading.tradercli.api.service.Trader;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class TraderImpl extends Trader {
@@ -17,16 +21,14 @@ public class TraderImpl extends Trader {
     }
 
     @Override
-    protected BuySucceeded buy(BuyCommand buyCommand) {
+    public BuySucceeded buy(BuyCommand buyCommand) {
         traderHistoryRepository.add(buyCommand);
         return new BuySucceeded(new DateTime(LocalDateTime.now()));
     }
 
     @Override
-    protected SellSucceeded sell(SellCommand sellCommand) {
+    public SellSucceeded sell(SellCommand sellCommand) {
         traderHistoryRepository.add(sellCommand);
         return new SellSucceeded(new DateTime(LocalDateTime.now()));
     }
-
-
 }

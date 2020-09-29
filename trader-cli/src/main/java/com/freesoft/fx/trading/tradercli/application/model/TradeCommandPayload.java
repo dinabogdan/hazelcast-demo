@@ -7,7 +7,7 @@ public class TradeCommandPayload {
     private int units;
     private QuoteItem quoteItem;
 
-    private TradeCommandPayload() {
+    public TradeCommandPayload() {
 
     }
 
@@ -24,11 +24,11 @@ public class TradeCommandPayload {
         return quoteItem;
     }
 
-    private void setUnits(int units) {
+    public void setUnits(int units) {
         this.units = units;
     }
 
-    private void setQuoteItem(QuoteItem quoteItem) {
+    public void setQuoteItem(QuoteItem quoteItem) {
         this.quoteItem = quoteItem;
     }
 

@@ -1,14 +1,14 @@
 package com.freesoft.fx.trading.tradercli.infrastructure.imdg;
 
-import com.freesoft.fx.trading.tradercli.api.model.Quote;
-import com.freesoft.fx.trading.tradercli.api.model.QuotePair;
+import java.io.Serializable;
+
+import com.freesoft.fx.trading.marketclient.api.model.Quote;
+import com.freesoft.fx.trading.marketclient.api.model.QuotePair;
 import com.hazelcast.core.EntryEvent;
 import com.hazelcast.core.EntryListener;
 import com.hazelcast.map.MapEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.Serializable;
 
 public class QuotesMapEntryListener implements EntryListener<QuotePair, Quote>, Serializable {
     private static final Logger logger = LoggerFactory.getLogger(QuotesMapEntryListener.class);
@@ -26,13 +26,11 @@ public class QuotesMapEntryListener implements EntryListener<QuotePair, Quote>, 
     @Override
     public void entryExpired(EntryEvent<QuotePair, Quote> event) {
         throw new IllegalStateException("Entries can not be expired");
-
     }
 
     @Override
     public void entryRemoved(EntryEvent<QuotePair, Quote> event) {
         throw new IllegalStateException("Entries can not be removed");
-
     }
 
     @Override

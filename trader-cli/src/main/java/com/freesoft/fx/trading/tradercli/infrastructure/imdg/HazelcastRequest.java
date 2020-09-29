@@ -1,13 +1,12 @@
 package com.freesoft.fx.trading.tradercli.infrastructure.imdg;
 
+import java.util.concurrent.Callable;
+
 import com.freesoft.fx.trading.tradercli.api.model.BuySucceeded;
 import com.freesoft.fx.trading.tradercli.api.model.SellSucceeded;
 import com.freesoft.fx.trading.tradercli.application.model.TradeCommand;
 import com.freesoft.fx.trading.tradercli.application.model.TraderId;
-import com.freesoft.fx.trading.tradercli.infrastructure.pu.BuyTask;
-import com.freesoft.fx.trading.tradercli.infrastructure.pu.SellTask;
-
-import java.util.concurrent.Callable;
+import com.freesoft.fx.trading.tradercli.infrastructure.pu.ProcessingUnitTaskMapper;
 
 public class HazelcastRequest<T> {
 
@@ -39,8 +38,8 @@ public class HazelcastRequest<T> {
         return partitioningKey;
     }
 
-    public static <R> HazelcastRequest<R> of(Callable<R> task) {
-        return new HazelcastRequest<>(task);
+    public static <R> HazelcastRequest<R> of(String partitioningKey, Callable<R> task) {
+        return new HazelcastRequest<>(partitioningKey, task);
     }
 
     public Callable<T> getTask() {
@@ -48,11 +47,11 @@ public class HazelcastRequest<T> {
     }
 
     public static HazelcastRequest<BuySucceeded> of(TraderId trader, TradeCommand.BuyCommand command) {
-        return HazelcastRequest.of(BuyTask.of(trader, command));
+        return HazelcastRequest.of(trader.getValue(), ProcessingUnitTaskMapper.buyTaskOf(trader, command));
 
     }
 
     public static HazelcastRequest<SellSucceeded> of(TraderId trader, TradeCommand.SellCommand command) {
-        return HazelcastRequest.of(SellTask.of(trader, command));
+        return HazelcastRequest.of(trader.getValue(), ProcessingUnitTaskMapper.sellTaskOf(trader, command));
     }
 }

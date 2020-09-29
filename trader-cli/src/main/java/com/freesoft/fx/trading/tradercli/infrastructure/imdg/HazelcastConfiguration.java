@@ -1,8 +1,8 @@
 package com.freesoft.fx.trading.tradercli.infrastructure.imdg;
 
+import com.freesoft.fx.trading.marketclient.api.model.Quote;
+import com.freesoft.fx.trading.marketclient.api.model.QuotePair;
 import com.freesoft.fx.trading.tradercli.TraderCliApplication;
-import com.freesoft.fx.trading.tradercli.api.model.Quote;
-import com.freesoft.fx.trading.tradercli.api.model.QuotePair;
 import com.freesoft.fx.trading.tradercli.infrastructure.pu.BuyTask;
 import com.freesoft.fx.trading.tradercli.infrastructure.pu.SellTask;
 import com.hazelcast.client.config.ClientConfig;

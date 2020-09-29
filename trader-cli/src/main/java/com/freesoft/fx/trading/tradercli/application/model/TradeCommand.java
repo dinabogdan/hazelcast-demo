@@ -4,9 +4,13 @@ import java.util.Objects;
 
 public abstract class TradeCommand {
 
-    private final TradeCommandPayload payload;
+    private TradeCommandPayload payload;
 
-    protected TradeCommand(TradeCommandPayload payload) {
+    public TradeCommand() {
+
+    }
+
+    public TradeCommand(TradeCommandPayload payload) {
         this.payload = payload;
     }
 
@@ -29,7 +33,11 @@ public abstract class TradeCommand {
 
     public static class BuyCommand extends TradeCommand {
 
-        protected BuyCommand(TradeCommandPayload payload) {
+        public BuyCommand() {
+            super();
+        }
+
+        public BuyCommand(TradeCommandPayload payload) {
             super(payload);
         }
 
@@ -47,7 +55,7 @@ public abstract class TradeCommand {
 
     public static class SellCommand extends TradeCommand {
 
-        protected SellCommand(TradeCommandPayload payload) {
+        public SellCommand(TradeCommandPayload payload) {
             super(payload);
         }
 
